@@ -151,9 +151,9 @@ class Alipay implements GatewayApplicationInterface
     public function verify($data = null, $refund = false): Collection
     {
         if (is_null($data)) {
-            $request = Request::createFromGlobals();
-
-            $data = $request->request->count() > 0 ? $request->request->all() : $request->query->all();
+            //$request = Request::createFromGlobals();
+            //$data = $request->request->count() > 0 ? $request->request->all() : $request->query->all();
+            $data=request()->all();
             $data = Support::encoding($data, 'utf-8', $data['charset'] ?? 'gb2312');
         }
 

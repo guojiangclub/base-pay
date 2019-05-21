@@ -171,7 +171,9 @@ class Wechat implements GatewayApplicationInterface
      */
     public function verify($content = null, $refund = false): Collection
     {
-        $content = $content ?? Request::createFromGlobals()->getContent();
+        //$content = $content ?? Request::createFromGlobals()->getContent();
+
+        $content = $content ?? request()->getContent();
 
         Events::dispatch(Events::REQUEST_RECEIVED, new Events\RequestReceived('Wechat', '', [$content]));
 
